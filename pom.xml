@@ -50,10 +50,12 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.6.1</version>
+			<!-- <version>3.6.1</version> -->
 				<configuration>
+					<verbouse>true</verbouse>
 					<source>1.8</source>
 					<target>1.8</target>
+					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -67,7 +69,7 @@
 							<goal>prepare-agent</goal>
 						</goals>
 						<configuration>
-							<destFile>${progect.build.directory}/jacoco.exec</destFile>
+							<destFile>${project.build.directory}/jacoco.exec</destFile>
 							<propertyName>surefireArgLine</propertyName>
 						</configuration>
 					</execution>
@@ -79,7 +81,7 @@
 						</goals>
 						<configuration>
 							<datafile>${project.build.directory}/jacoco.exec</datafile>
-							<outputDirectory>${project.outputDirectory}/jacoco</outputDirectory>
+							<outputDirectory>${project.reporting.outputDirectory}/jacoco</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>
@@ -95,7 +97,7 @@
 							<goal>test</goal>
 						</goals>
 						<configuration>
-							<testFailIgnore>true</testFailIgnore>
+							<testFailureIgnore>true</testFailureIgnore>
 							<argline>${surefireArgLine}</argline>
 						</configuration>
 					</execution>
